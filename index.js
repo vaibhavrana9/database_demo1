@@ -37,7 +37,7 @@ app.post("/api/add_person",(req,res) => {
         
         console.log("Final result", pdata);
 
-        res.statusCode(200).send ({
+        res.status(200).send ({
                 "Status_code" : 200,
                 "Message" : "Person data added successfully",
                 "Person" : pdata,
