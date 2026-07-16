@@ -20,7 +20,7 @@ app.listen( port, ()=> {
 
 
 
-//POST api
+//POST api---------------------------------------------------
 
 app.post("/api/add_person",(req,res) => {
         console.log("Result: ", req.body);
@@ -42,21 +42,23 @@ app.post("/api/add_person",(req,res) => {
                 "Message" : "Person data added successfully",
                 "Person" : pdata,
         });
-
 })
-
+//-----------------------------------------------------------
 //GET api
+
 app.get("/api/get_person",(req,res) => {
 
         if(personData.length>0) {
                 res.status(200).send ({
                         "Status_code" : 200,
-                        "Person" : [],
-                        
-                        
+                        "person" : personData,        
                 })
         }
+        else {
 
-
+        res.status(200).send({
+            Status_code: 200,
+            person: [],
+        });
+    }
 });
-
