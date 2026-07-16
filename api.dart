@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../person_model.dart';
 
@@ -24,20 +23,18 @@ class Api {
       } else {
         print("Failed to upload data");
       }
-
     } catch (e){
       print(e.toString());
     }
   }
 
   //GET api
-  static getPerson() async {
+  static Future<List<dynamic>> getPerson() async {
     List<Person> person = [ ];
     var url = Uri.parse(baseurl + "get_person");
 
     try{
-
-      final res = await http.get(Uri.parse("uri"));
+      final res = await http.get(url);
 
       if (res.statusCode == 200) {
         var data = jsonDecode(res.body);
@@ -58,9 +55,7 @@ class Api {
 
     } catch(e) {
       print(e.toString());
+      return [];
     }
-
   }
-
-
 }
